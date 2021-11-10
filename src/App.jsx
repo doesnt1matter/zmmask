@@ -5,7 +5,7 @@ import popup from "./store/popup"
 
 import "materialize-css"
 
-import { Redirect, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import ScrollToTop from 'react-router-scroll-top'
 import { Header, MainInfo, Recomendation, Detail, Footer, Cart, Popup, AddVoice, AddCart, AlreadyAddCart, Catalog, Order } from "./components/index"
 import { observer } from 'mobx-react-lite'

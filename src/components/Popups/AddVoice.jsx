@@ -5,7 +5,7 @@ import popup from "../../store/popup"
 import url from "../../store/url"
 
 const AddVoice = () => {
-   const [rating, setRating] = useState(0)
+   const [rating, setRating] = useState(1)
    const [form, setForm] = useState({
       user: "",
       rating: rating,

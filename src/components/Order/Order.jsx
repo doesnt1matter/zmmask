@@ -22,7 +22,7 @@ const Order = () => {
    const changeHandler = (event) => {
       setForm({ ...form, [event.target.name]: event.target.value })
       if (event.target.name === "name" || "city" || "street") {
-         if (event.target.value.split("").length <= 4) {
+         if (event.target.value.split("").length <= 4 && event.target.value.split("").length !== 0) {
             event.target.classList.add("_error")
          }
          else {
@@ -30,7 +30,7 @@ const Order = () => {
          }
       }
       if (event.target.name === "phone") {
-         if (event.target.value.split("").length < 11) {
+         if (event.target.value.split("").length < 11 && event.target.value.split("").length !== 0) {
             event.target.classList.add("_error")
          }
          else {
@@ -38,7 +38,7 @@ const Order = () => {
          }
       }
       if (event.target.name === "email") {
-         if (event.target.value.split("").indexOf("@") === -1) {
+         if (event.target.value.split("").indexOf("@") === -1 && event.target.value.split("").length !== 0) {
             event.target.classList.add("_error")
          }
          else {
@@ -146,7 +146,7 @@ const Order = () => {
                         <div className="person-data__label-text">Номер телефона</div>
                      </div>
                      <input
-                        type="number"
+                        type="string"
                         placeholder="+7 000 000-00-00"
                         name="phone"
                         id="phone"

@@ -23,7 +23,7 @@ const AddVoice = () => {
    }
 
    let [stars, setStars] = useState(
-      ["stars__star", "stars__star", "stars__star", "stars__star", "stars__star"]
+      ["stars__star _active", "stars__star", "stars__star", "stars__star", "stars__star"]
    )
    const changeStars = (number) => {
       let counter = 0
@@ -96,8 +96,8 @@ const AddVoice = () => {
             onClick={() => {
                fetchData()
                popup.changeAddVoice()
-               setRating(0)
-               changeStars(0)
+               setRating(1)
+               changeStars(1)
                setForm({
                   user: "",
                   rating: rating,

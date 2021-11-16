@@ -4,6 +4,7 @@ import { UnderHeader } from "../index"
 import { Link } from "react-router-dom"
 
 import cart from "../../store/cart"
+import popup from "../../store/popup"
 import { observer } from 'mobx-react-lite'
 
 import { useHistory } from 'react-router-dom'
@@ -12,14 +13,14 @@ const Header = observer(() => {
 
    const [menuActive, setMenuActive] = useState(false)
 
-   const [url, setUrl] = useState("/main")
+   const [url, setUrl] = useState(window.location.pathname)
    const history = useHistory()
    useEffect(() => {
       return history.listen((location) => {
          setUrl(location.pathname)
          setMenuActive(false)
       })
-   }, [history])
+   }, [history, url])
 
    return (
       <header className="header">
@@ -37,33 +38,38 @@ const Header = observer(() => {
             </Link>
             <div className={menuActive === false ? "header__list" : "header__list _active"}>
                <Link
-                  to="/main" className={url === "/main" ? "header__link  _active" : "header__link"}
+                  to="/main" className={url === "/main" || url.split("").length === 1 ? "header__link  _active" : "header__link"}
                   onClick={() => {
                      setMenuActive(false)
+                     setUrl("/main")
                   }}
                >Главная</Link>
                <Link
                   to="/deliver" className={url === "/deliver" ? "header__link _active" : "header__link "}
                   onClick={() => {
                      setMenuActive(false)
+                     setUrl("/deliver")
                   }}
                >Доставка</Link>
                <Link
                   to="/opt" className={url === "/opt" ? "header__link _active" : "header__link"}
                   onClick={() => {
                      setMenuActive(false)
+                     setUrl("/opt")
                   }}
                >ОПТ</Link>
                <Link
                   to="/contacts" className={url === "/contacts" ? "header__link _active" : "header__link"}
                   onClick={() => {
                      setMenuActive(false)
+                     setUrl("/contacts")
                   }}
                >Контакты</Link>
                <Link
                   to="/defend" className={url === "/defend" ? "header__link _active" : "header__link"}
                   onClick={() => {
                      setMenuActive(false)
+                     setUrl("/defend")
                   }}
                >Что защищает?</Link>
             </div>
@@ -92,7 +98,12 @@ const Header = observer(() => {
                   <img src="./img/telephone.png" alt="telephone" />
                </button>
                <a className="telephone__number" href="tel:+79296228880">+7 929 622 88 80</a>
-               <p className="telephone__text">Заказать звонок</p>
+               <p
+                  className="telephone__text"
+                  onClick={() => {
+                     popup.changeAddPhoneOrder()
+                  }}
+               >Заказать звонок</p>
             </div>
             <div
                className="header__menu-wrap"

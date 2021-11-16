@@ -133,7 +133,13 @@ const Item = (props) => {
                   cart.addToCart(props.mask._id, { ...item, cost: Math.ceil((props.mask.cost - (props.mask.cost * (props.mask.discount / 100))) * item.number) })
                }}
             >В корзину <img src="./img/cart_w.png" alt="cart" /></button>
-            <Link to="/" className="item__add-link">Купить в 1 клик</Link>
+            <Link
+               to="/order"
+               className="item__add-link"
+               onClick={() => {
+                  cart.addToCart(props.mask._id, { ...item, cost: Math.ceil((props.mask.cost - (props.mask.cost * (props.mask.discount / 100))) * item.number) })
+               }}
+            >Купить в 1 клик</Link>
          </div>
       </div>
    )

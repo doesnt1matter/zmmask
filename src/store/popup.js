@@ -8,6 +8,7 @@ class Popup {
    addVoice = false
    addCart = false
    alreadyAddCart = false
+   addPhoneOrder = false
 
    changeAddVoice() {
       this.addVoice = !this.addVoice
@@ -17,6 +18,9 @@ class Popup {
    }
    changeAlreadyAddCart() {
       this.alreadyAddCart = !this.alreadyAddCart
+   }
+   changeAddPhoneOrder() {
+      this.addPhoneOrder = !this.addPhoneOrder
    }
 
 }
